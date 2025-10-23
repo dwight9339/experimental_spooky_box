@@ -1,0 +1,1097 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>storage – Storage management &mdash; Adafruit CircuitPython 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../../_static/customstyle.css?v=9df85a0d" />
+      <link rel="stylesheet" type="text/css" href="../../_static/filter.css?v=871e27e1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/rtd_sphinx_search.min.css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/filter.js?v=8e031f0f"></script>
+      <script src="../../_static/js/rtd_search_config.js"></script>
+      <script src="../../_static/js/rtd_sphinx_search.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="struct – Manipulation of c-style data" href="../struct/index.html" />
+    <link rel="prev" title="ssl" href="../ssl/index.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="circuitpython" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/shared-bindings/storage/index.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../docs/index.html" class="icon icon-home">
+            Adafruit CircuitPython
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API and Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Core Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../support_matrix.html">Module Support Matrix - Which Modules Are Available on Which Boards</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#modules">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../_bleio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_bleio</span></code> – Bluetooth Low Energy (BLE) communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_eve/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_eve</span></code> – Low-level BridgeTek EVE bindings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_pew/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_pew</span></code> – LED matrix driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_pixelmap/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_pixelmap</span></code> – A fast pixel mapping library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_stage/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_stage</span></code> – C-level helpers for animation of sprites on a stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adafruit_bus_device/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">adafruit_bus_device</span></code> – Hardware accelerated external bus access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adafruit_pixelbuf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">adafruit_pixelbuf</span></code> – A fast RGB(W) pixel buffer library for like NeoPixel and DotStar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../aesio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aesio</span></code> – AES encryption routines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../alarm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">alarm</span></code> – Alarms and sleep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../analogbufio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">analogbufio</span></code> – Analog Buffered IO Hardware Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../analogio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">analogio</span></code> – Analog hardware support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../atexit/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code> – Atexit Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiobusio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiobusio</span></code> – Support for audio input and output over digital buses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiocore/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiocore</span></code> – Support for audio samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiodelays/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiodelays</span></code> – Support for audio delay effects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiofilters/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiofilters</span></code> – Support for audio filter effects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiofreeverb/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiofreeverb</span></code> – Support for audio freeverb effect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audioio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioio</span></code> – Support for audio output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiomixer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiomixer</span></code> – Support for audio mixing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiomp3/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiomp3</span></code> – Support for MP3-compressed audio files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audiopwmio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audiopwmio</span></code> – Audio output via digital PWM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../aurora_epaper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aurora_epaper</span></code> – A framebuffer for Pervasive Displays Aurora E-paper displays.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bitbangio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bitbangio</span></code> – Digital protocols implemented by the CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bitmapfilter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bitmapfilter</span></code> – Convolve an image with a kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bitmaptools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bitmaptools</span></code> – Collection of bitmap manipulation tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bitops/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bitops</span></code> – Routines for low-level manipulation of binary data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../board/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">board</span></code> – Board specific pin names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../busdisplay/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">busdisplay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../busio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">busio</span></code> – Hardware accelerated external bus access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../camera/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">camera</span></code> – Support for camera input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../canio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">canio</span></code> – CAN bus access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../codeop/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">codeop</span></code> – Utilities to compile possibly incomplete Python source code.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../countio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">countio</span></code> – Support for edge counting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cyw43/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cyw43</span></code> – A class that represents a GPIO pin attached to the wifi chip.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../digitalio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">digitalio</span></code> – Basic digital pin support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../displayio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">displayio</span></code> – High level, display object compositing system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dotclockframebuffer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dotclockframebuffer</span></code> – Native helpers for driving parallel displays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dualbank/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dualbank</span></code> – Dualbank Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../epaperdisplay/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">epaperdisplay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../espcamera/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">espcamera</span></code> – Wrapper for the espcamera library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../espidf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">espidf</span></code> – Return the total size of the ESP-IDF, which includes the CircuitPython heap.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../espnow/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">espnow</span></code> – ESP-NOW Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../espulp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">espulp</span></code> – ESP Ultra Low Power Processor Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../floppyio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">floppyio</span></code> – Read flux transition information into the buffer.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fontio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fontio</span></code> – Core font related data structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fourwire/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fourwire</span></code> – Connects to a BusDisplay over a four wire bus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../framebufferio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framebufferio</span></code> – Native framebuffer display driving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../frequencyio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frequencyio</span></code> – Support for frequency based protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getpass/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">getpass</span></code> – Getpass Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gifio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gifio</span></code> – Access GIF-format images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gnss/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gnss</span></code> – Global Navigation Satellite System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hashlib/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hashlib</span></code> – Hashing related functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2cdisplaybus/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">i2cdisplaybus</span></code> – Communicates to a display IC over I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2ctarget/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">i2ctarget</span></code> – Two wire serial protocol target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagecapture/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imagecapture</span></code> – Support for “Parallel capture” interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ipaddress/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../is31fl3741/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">is31fl3741</span></code> – Creates an in-memory framebuffer for a IS31FL3741 device.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jpegio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">jpegio</span></code> – Support for JPEG image decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keypad/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">keypad</span></code> – Support for scanning keys and key matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keypad_demux/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">keypad_demux</span></code> – Support for scanning key matrices that use a demultiplexer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../locale/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">locale</span></code> – Locale support module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvfontio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lvfontio</span></code> – Core font related data structures for LVGL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../math/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> – mathematical functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../max3421e/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">max3421e</span></code> – Provide USB host via a connected MAX3421E chip.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mdns/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mdns</span></code> – Multicast Domain Name Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../memorymap/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">memorymap</span></code> – Raw memory map access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../memorymonitor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">memorymonitor</span></code> – Memory monitoring helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../microcontroller/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">microcontroller</span></code> – Pin references and cpu functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../micropython/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">micropython</span></code> – Access and control MicroPython internals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../msgpack/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msgpack</span></code> – Pack object in msgpack format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../neopixel_write/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neopixel_write</span></code> – Low-level neopixel implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nvm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nvm</span></code> – Non-volatile memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../onewireio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">onewireio</span></code> – Low-level bit primitives for Maxim (formerly Dallas Semi) one-wire protocol.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../os/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code> – functions that an OS normally provides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paralleldisplaybus/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">paralleldisplaybus</span></code> – Native helpers for driving parallel displays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../picodvi/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">picodvi</span></code> – Low-level routines for interacting with PicoDVI Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ps2io/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ps2io</span></code> – Support for PS/2 protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pulseio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pulseio</span></code> – Support for individual pulse based protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pwmio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pwmio</span></code> – Support for PWM based protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../qrio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrio</span></code> – Low-level QR code decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rainbowio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rainbowio</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code> – pseudo-random numbers and choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rclcpy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rclcpy</span></code> – Robot Operating System (ROS2) connectivity through micro-ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rgbmatrix/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rgbmatrix</span></code> – Low-level routines for bitbanged LED matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rotaryio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rotaryio</span></code> – Support for reading rotation sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rp2pio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rp2pio</span></code> – Hardware interface to RP2 series’ programmable IO (PIO) peripheral.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rtc</span></code> – Real Time Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../samd/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">samd</span></code> – SAMD implementation settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdcardio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sdcardio</span></code> – Interface to an SD card via the SPI bus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdioio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sdioio</span></code> – Interface to an SD card via the SDIO bus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sharpdisplay/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sharpdisplay</span></code> – Support for Sharp Memory Display framebuffers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../socketpool/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">socketpool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spitarget/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spitarget</span></code> – Serial Peripheral Interface protocol target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ssl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ssl</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">storage</span></code> – Storage management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#storage.mount"><code class="docutils literal notranslate"><span class="pre">mount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.umount"><code class="docutils literal notranslate"><span class="pre">umount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.remount"><code class="docutils literal notranslate"><span class="pre">remount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.getmount"><code class="docutils literal notranslate"><span class="pre">getmount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.erase_filesystem"><code class="docutils literal notranslate"><span class="pre">erase_filesystem()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.disable_usb_drive"><code class="docutils literal notranslate"><span class="pre">disable_usb_drive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.enable_usb_drive"><code class="docutils literal notranslate"><span class="pre">enable_usb_drive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage.VfsFat"><code class="docutils literal notranslate"><span class="pre">VfsFat</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../struct/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code> – Manipulation of c-style data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../supervisor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">supervisor</span></code> – Supervisor settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synthio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">synthio</span></code> – Support for multi-channel audio synthesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../terminalio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">terminalio</span></code> – Displays text in a TileGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tilepalettemapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tilepalettemapper</span></code> – Remaps color indices from the source bitmap to alternate indices on a
+per-tile basis. This allows for altering coloring of tiles based on
+their tilegrid location. It also allows for using a limited color
+bitmap with a wider array of colors.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code> – time and timing related functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../touchio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">touchio</span></code> – Touch related IO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../traceback/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">traceback</span></code> – Traceback Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uheap/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uheap</span></code> – Heap size analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ulab/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ulab</span></code> – Manipulate numeric data similar to numpy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">usb</span></code> – PyUSB-compatible USB host API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb_cdc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">usb_cdc</span></code> – USB CDC Serial streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb_hid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">usb_hid</span></code> – USB Human Interface Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb_host/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">usb_host</span></code> – USB Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb_midi/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">usb_midi</span></code> – MIDI over USB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb_video/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">usb_video</span></code> – Allows streaming bitmaps to a host computer via USB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ustack/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ustack</span></code> – Stack information and analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vectorio/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vectorio</span></code> – Lightweight 2D shapes for displays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../videocore/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">videocore</span></code> – Low-level routines for interacting with the Broadcom VideoCore GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../warnings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code> – Warn about potential code issues.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">watchdog</span></code> – Watchdog Timer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../wifi/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wifi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zephyr_serial/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zephyr_serial</span></code> – Zephyr UART driver for fixed busses.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zlib/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zlib</span></code> – zlib decompression functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../help.html"><code class="xref py py-func docutils literal notranslate"><span class="pre">help()</span></code> – Built-in method to provide helpful information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/library/index.html">Standard Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/supported_ports.html">Supported Ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/libraries.html">Adafruit CircuitPython Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/libraries.html#circuitpython-library-bundles">CircuitPython Library Bundles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/workflows.html">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/environment.html">Environment Variables</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Design and porting reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/design_guide.html">Design Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/porting.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/porting.html#porting">Porting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/common_hal.html">Adding <code class="docutils literal notranslate"><span class="pre">*io</span></code> support to other ports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About the project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">CircuitPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BUILDING.html">Building CircuitPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CODE_OF_CONDUCT.html">Adafruit Community Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LICENSE.html">MicroPython &amp; CircuitPython License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBUSB_README.html">WebUSB Serial Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../docs/index.html">Adafruit CircuitPython</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../docs/index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Core Modules</a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">storage</span></code> – Storage management</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-storage">
+<span id="storage"></span><h1><a class="reference internal" href="#module-storage" title="storage"><code class="xref py py-mod docutils literal notranslate"><span class="pre">storage</span></code></a> – Storage management<a class="headerlink" href="#module-storage" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="#module-storage" title="storage"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">storage</span></code></a> provides storage management functionality such as mounting and
+unmounting which is typically handled by the operating system hosting Python.
+CircuitPython does not have an OS, so this module provides this functionality
+directly.</p>
+<p>For more information regarding using the <a class="reference internal" href="#module-storage" title="storage"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">storage</span></code></a> module, refer to the <a class="reference external" href="https://learn.adafruit.com/circuitpython-essentials/circuitpython-storage">CircuitPython
+Essentials Learn guide</a>.</p>
+<p>
+<details>
+<summary>Available on these boards</summary>
+<ul>
+<li> 01Space 0.42 OLED ESP32C3
+<li> 0xCB Gemini
+<li> 0xCB Helios
+<li> 42. Keebs Frood
+<li> 8086 Commander
+<li> 8086 RP2040 Interfacer
+<li> 8086 USB Interposer
+<li> @sarfata shIRtty
+<li> AITHinker ESP32-C3S_Kit
+<li> AITHinker ESP32-C3S_Kit_2M
+<li> APARD32690
+<li> ARAMCON Badge 2019
+<li> ARAMCON2 Badge
+<li> ATMegaZero ESP32-S2
+<li> Adafruit BLM Badge
+<li> Adafruit CLUE nRF52840 Express
+<li> Adafruit Camera
+<li> Adafruit Circuit Playground Bluefruit
+<li> Adafruit Circuit Playground Express 4-H
+<li> Adafruit CircuitPlayground Express
+<li> Adafruit CircuitPlayground Express with Crickit libraries
+<li> Adafruit CircuitPlayground Express with displayio
+<li> Adafruit EdgeBadge
+<li> Adafruit Feather Bluefruit Sense
+<li> Adafruit Feather ESP32 V2
+<li> Adafruit Feather ESP32-C6 4MB Flash No PSRAM
+<li> Adafruit Feather ESP32-S2 Reverse TFT
+<li> Adafruit Feather ESP32-S2 TFT
+<li> Adafruit Feather ESP32-S3 Reverse TFT
+<li> Adafruit Feather ESP32-S3 TFT
+<li> Adafruit Feather ESP32S2
+<li> Adafruit Feather ESP32S3 4MB Flash 2MB PSRAM
+<li> Adafruit Feather ESP32S3 No PSRAM
+<li> Adafruit Feather HUZZAH32
+<li> Adafruit Feather M0 Adalogger
+<li> Adafruit Feather M0 Basic
+<li> Adafruit Feather M0 Express
+<li> Adafruit Feather M0 Express with Crickit libraries
+<li> Adafruit Feather M0 RFM69
+<li> Adafruit Feather M0 RFM9x
+<li> Adafruit Feather M4 CAN
+<li> Adafruit Feather M4 Express
+<li> Adafruit Feather MIMXRT1011
+<li> Adafruit Feather RP2040
+<li> Adafruit Feather RP2040 Adalogger
+<li> Adafruit Feather RP2040 CAN
+<li> Adafruit Feather RP2040 DVI
+<li> Adafruit Feather RP2040 Prop-Maker
+<li> Adafruit Feather RP2040 RFM
+<li> Adafruit Feather RP2040 Scorpio
+<li> Adafruit Feather RP2040 ThinkInk
+<li> Adafruit Feather RP2040 USB Host
+<li> Adafruit Feather RP2350
+<li> Adafruit Feather RP2350 Adalogger
+<li> Adafruit Feather STM32F405 Express
+<li> Adafruit Feather nRF52840 Express
+<li> Adafruit Floppsy RP2040
+<li> Adafruit Fruit Jam
+<li> Adafruit FunHouse
+<li> Adafruit Gemma M0
+<li> Adafruit Gemma M0 PyCon 2018
+<li> Adafruit Grand Central M4 Express
+<li> Adafruit HUZZAH32 Breakout
+<li> Adafruit Hallowing M4 Express
+<li> Adafruit ItsyBitsy ESP32
+<li> Adafruit ItsyBitsy M0 Express
+<li> Adafruit ItsyBitsy M4 Express
+<li> Adafruit ItsyBitsy RP2040
+<li> Adafruit ItsyBitsy nRF52840 Express
+<li> Adafruit KB2040
+<li> Adafruit LED Glasses Driver nRF52840
+<li> Adafruit Macropad RP2040
+<li> Adafruit MagTag
+<li> Adafruit Matrix Portal M4
+<li> Adafruit MatrixPortal S3
+<li> Adafruit Metro ESP32S2
+<li> Adafruit Metro ESP32S3
+<li> Adafruit Metro M0 Express
+<li> Adafruit Metro M4 Airlift Lite
+<li> Adafruit Metro M4 Express
+<li> Adafruit Metro RP2040
+<li> Adafruit Metro RP2350
+<li> Adafruit Metro nRF52840 Express
+<li> Adafruit Mini Sparkle Motion
+<li> Adafruit Monster M4SK
+<li> Adafruit NeoKey Trinkey M0
+<li> Adafruit NeoPixel Trinkey M0
+<li> Adafruit Pixel Trinkey M0
+<li> Adafruit ProxLight Trinkey M0
+<li> Adafruit PyGamer
+<li> Adafruit PyPortal
+<li> Adafruit PyPortal Pynt
+<li> Adafruit PyPortal Titano
+<li> Adafruit PyRuler
+<li> Adafruit Pybadge
+<li> Adafruit QT Py ESP32 PICO
+<li> Adafruit QT Py ESP32-S3 4MB Flash 2MB PSRAM
+<li> Adafruit QT Py ESP32-S3 no psram
+<li> Adafruit QT Py ESP32C3
+<li> Adafruit QT Py ESP32S2
+<li> Adafruit QT Py M0
+<li> Adafruit QT Py M0 Haxpress
+<li> Adafruit QT Py RP2040
+<li> Adafruit QT2040 Trinkey
+<li> Adafruit Rotary Trinkey M0
+<li> Adafruit SHT4x Trinkey M0
+<li> Adafruit Slide Trinkey M0
+<li> Adafruit Sparkle Motion
+<li> Adafruit Sparkle Motion Stick
+<li> Adafruit TRRS Trinkey M0
+<li> Adafruit Trellis M4 Express
+<li> Adafruit Trinket M0
+<li> Adafruit Vindie S2
+<li> Adafruit-Qualia-S3-RGB666
+<li> Ai Thinker ESP32-CAM
+<li> AloriumTech Evo M51
+<li> Archi RP2040
+<li> Arduino MKR Zero
+<li> Arduino MKR1300
+<li> Arduino Nano 33 BLE
+<li> Arduino Nano 33 BLE Rev2
+<li> Arduino Nano 33 IoT
+<li> Arduino Nano ESP32
+<li> Arduino Nano RP2040 Connect
+<li> Arduino Zero
+<li> Artisense Reference Design RD00
+<li> AtelierDuMaker nRF52840 Breakout
+<li> AutosportLabs-ESP32-CAN-X2
+<li> BARDUINO 4.0.2
+<li> BBQ20KBD
+<li> BDMICRO VINA-D51
+<li> BLE-SS dev board Multi Sensor
+<li> BLING!
+<li> BLOK
+<li> BPI-Bit-S2
+<li> BPI-Leaf-S3
+<li> BPI-PicoW-S3
+<li> BastBLE
+<li> BastWiFi
+<li> Bee-Data-Logger
+<li> Bee-Motion-S3
+<li> Bee-S3
+<li> BlizzardS3
+<li> BlueMicro833
+<li> BlueMicro840
+<li> Bradán Lane STUDIO Coin M0
+<li> Bradán Lane STUDIO Explorer Badge
+<li> COSMO-Pico
+<li> CP Sapling M0
+<li> CP Sapling M0 w/ SPI Flash
+<li> CP32-M4
+<li> CRCibernetica IdeaBoard
+<li> Capable Robot Programmable USB Hub
+<li> Cedar Grove StringCar M0 Express
+<li> Challenger NB RP2040 WiFi
+<li> Challenger RP2040 LTE
+<li> Challenger RP2040 LoRa
+<li> Challenger RP2040 SD/RTC
+<li> Challenger RP2040 SubGHz
+<li> Challenger RP2040 WiFi
+<li> Challenger RP2040 WiFi/BLE
+<li> Challenger+ RP2350 BConnect
+<li> Challenger+ RP2350 WiFi6/BLE5
+<li> Circuit Playground Express Digi-Key PyCon 2019
+<li> CircuitART Zero S3
+<li> CircuitBrains Basic
+<li> CircuitBrains Deluxe
+<li> ColumbiaDSL-Sensor-Board-V1
+<li> CrowPanel 4.2 EPaper
+<li> CrumpS2
+<li> Cygnet
+<li> Cytron EDU PICO W
+<li> Cytron IRIV IO Controller
+<li> Cytron MOTION 2350 Pro
+<li> Cytron Maker Feather AIoT S3
+<li> Cytron Maker Nano RP2040
+<li> Cytron Maker Pi RP2040
+<li> Cytron Maker Uno RP2040
+<li> DAISY_SEED
+<li> DFRobot Beetle ESP32-C3
+<li> DFRobot FireBeetle 2 ESP32-S3
+<li> Datanoise PicoADK
+<li> Datanoise PicoADK V2
+<li> Deneyap Kart
+<li> Deneyap Kart 1A
+<li> Deneyap Kart 1A v2
+<li> Deneyap Kart G
+<li> Deneyap Mini
+<li> Deneyap Mini v2
+<li> Diodes Delight Piunora
+<li> DynOSSAT-EDU-EPS
+<li> DynOSSAT-EDU-OBC
+<li> DynaLoRa_USB
+<li> E-Fidget
+<li> EDGES3D
+<li> ELECFREAKS PICO:ED
+<li> ES3ink
+<li> ESP 12k NodeMCU
+<li> ESP32 Devkit V1
+<li> ESP32-C3-DevKitM-1
+<li> ESP32-C3-Lyra-V2
+<li> ESP32-C6-DevKitC-1-N8
+<li> ESP32-C6-DevKitM-1
+<li> ESP32-C61-DevKitC-1-N8R2
+<li> ESP32-H2-DevKitM-1
+<li> ESP32-P4 Stamp XL
+<li> ESP32-P4-Function-EV
+<li> ESP32-S2-DevKitC-1-N4
+<li> ESP32-S2-DevKitC-1-N4R2
+<li> ESP32-S2-DevKitC-1-N8R2
+<li> ESP32-S3-Box-2.5
+<li> ESP32-S3-Box-Lite
+<li> ESP32-S3-DevKitC-1-N16
+<li> ESP32-S3-DevKitC-1-N32R8
+<li> ESP32-S3-DevKitC-1-N8
+<li> ESP32-S3-DevKitC-1-N8R2
+<li> ESP32-S3-DevKitC-1-N8R2 (ROS version)
+<li> ESP32-S3-DevKitC-1-N8R8
+<li> ESP32-S3-DevKitC-1-N8R8-with-HACKTABLET
+<li> ESP32-S3-DevKitM-1-N8
+<li> ESP32-S3-EYE
+<li> ESP32-S3-USB-OTG-N8
+<li> ESP8684-DevKitC-02-N4
+<li> Elecrow CrowPanel
+<li> Electrolama minik
+<li> Electronic Cats Bast Pro Mini M0
+<li> Electronic Cats CatWAN USBStick
+<li> Electronic Cats Hunter Cat NFC
+<li> Electronic Cats NFC Copy Cat
+<li> Electronut Labs Blip
+<li> Electronut Labs Papyr
+<li> EncoderPad RP2040
+<li> Escornabot Makech
+<li> Espressif ESP32 DevKitc V4 WROOM-32E
+<li> Espressif ESP32 DevKitc V4 WROVER
+<li> Espressif ESP32 TTGO T8 v1.7
+<li> Espressif ESP32-EYE
+<li> Espressif ESP32-LyraT
+<li> Espressif-ESP32-S3-LCD-EV-Board
+<li> Espressif-ESP32-S3-LCD-EV-Board_v1.5
+<li> Espruino Bangle.js 2
+<li> Espruino Pico
+<li> Espruino Wifi
+<li> Feather MIMXRT1011
+<li> Feather MIMXRT1062
+<li> FeatherS2
+<li> FeatherS2 Neo
+<li> FeatherS2 PreRelease
+<li> FeatherS3
+<li> FeatherS3 Neo
+<li> Fig Pi
+<li> Flipper Zero Wi-Fi Dev
+<li> Fluff M0
+<li> Fomu
+<li> Franzininho WIFI w/Wroom
+<li> Franzininho WIFI w/Wrover
+<li> Freenove ESP32-WROVER-DEV-CAM
+<li> Gravitech Cucumber M
+<li> Gravitech Cucumber MS
+<li> Gravitech Cucumber R
+<li> Gravitech Cucumber RS
+<li> HEIA-FR Picomo V2
+<li> HEIA-FR Picomo V3
+<li> HMI-DevKit-1.1
+<li> HXR.DK SAO Digital Multimeter
+<li> Hack Club Sprig
+<li> Hacked Feather M0 Express with 8Mbyte SPI flash
+<li> HalloWing M0 Express
+<li> Hardkernel Odroid Go
+<li> Heltec ESP32-S3-WIFI-LoRa-V3
+<li> Heltec Vison Master E290
+<li> Heltec Wireless Paper
+<li> HexKyS2
+<li> HiiBot BlueFi
+<li> IMXRT1010-EVK
+<li> IMXRT1015-EVK
+<li> IkigaiSense Vita nRF52840
+<li> IoTs2
+<li> J&J Studios datum-Distance
+<li> J&J Studios datum-IMU
+<li> J&J Studios datum-Light
+<li> J&J Studios datum-Weather
+<li> Kaluga 1
+<li> LILYGO T-DISPLAY
+<li> LILYGO T-DISPLAY S3 v1.2
+<li> LILYGO T-Deck (Plus)
+<li> LILYGO T-Display S3 Pro
+<li> LILYGO T-Dongle S3
+<li> LILYGO T-QT PRO NO PSRAM
+<li> LILYGO T-QT PRO PSRAM
+<li> LILYGO T-Watch-S3
+<li> LILYGO TEMBED ESP32S3
+<li> LILYGO TTGO T-01C3
+<li> LILYGO TTGO T-DISPLAY v1.1
+<li> LILYGO TTGO T-DISPLAY v1.1 4M
+<li> LILYGO TTGO T-OI PLUS
+<li> LILYGO TTGO T8 ESP32-S2
+<li> LILYGO TTGO T8 ESP32-S2 w/Display
+<li> LOLIN S3 16MB Flash 8MB PSRAM
+<li> LOLIN S3 MINI 4MB Flash 2MB PSRAM
+<li> LOLIN S3 MINI PRO 4MB Flash 2MB PSRAM
+<li> LOLIN S3 PRO 16MB Flash 8MB PSRAM
+<li> Lilygo T-watch 2020 V3
+<li> LoC BeR M4 base board
+<li> Luatos Core-ESP32C3
+<li> M5STACK STAMP-C3
+<li> M5Stack Atom Echo
+<li> M5Stack Atom Lite
+<li> M5Stack Atom Matrix
+<li> M5Stack Atom U
+<li> M5Stack AtomS3
+<li> M5Stack AtomS3 Lite
+<li> M5Stack AtomS3U
+<li> M5Stack Cardputer
+<li> M5Stack Cardputer (ROS version)
+<li> M5Stack Core Basic
+<li> M5Stack Core Fire
+<li> M5Stack Core2
+<li> M5Stack CoreS3
+<li> M5Stack Dial
+<li> M5Stack DinMeter
+<li> M5Stack M5Paper
+<li> M5Stack Stamp-S3
+<li> M5Stack Stick C
+<li> M5Stack Stick C Plus
+<li> M5Stack Stick C Plus2
+<li> M5Stack Timer Camera X
+<li> MAX32690 EvKit
+<li> MDBT50Q-DB-40
+<li> MDBT50Q-RX Dongle
+<li> MEOWBIT
+<li> MORPHEANS MorphESP-240
+<li> MagiClick S3 N4R2
+<li> Maker Go ESP32C3 Supermini
+<li> Maker Go ESP32C6 Supermini
+<li> Maker badge by Czech maker
+<li> MakerDiary nRF52840 MDK
+<li> MakerDiary nRF52840 MDK USB Dongle
+<li> MakerFabs-ESP32-S3-Parallel-TFT-With-Touch-7inch
+<li> Makerdiary M60 Keyboard
+<li> Makerdiary Pitaya Go
+<li> Makerdiary nRF52840 Connect Kit
+<li> Makerdiary nRF52840 M.2 Developer Kit
+<li> Maple Computing Elite-Pi
+<li> Melopero Shake RP2040
+<li> Meow Meow
+<li> Metro MIMXRT1011
+<li> MicroDev microC3
+<li> MicroDev microS2
+<li> Mini SAM M4
+<li> MixGo CE
+<li> Music Thing Modular Workshop Computer
+<li> NUCLEO F446RE
+<li> NUCLEO STM32F746
+<li> NUCLEO STM32F767
+<li> NUCLEO STM32H743
+<li> NanoS3
+<li> Neuron
+<li> NodeMcu-ESP32-C2
+<li> Noise Nugget 2040
+<li> Nordic Semiconductor nRF5340 DK
+<li> Nordic Semiconductor nRF54L15 DK
+<li> Nordic Semiconductor nRF7002 DK
+<li> OMGS3
+<li> OMNIMO nRF52840
+<li> OPENMV-H7 R1
+<li> Oak Dev Tech BREAD2040
+<li> Oak Dev Tech Cast-Away RP2040
+<li> Oak Dev Tech PixelWing ESP32S2
+<li> Oak Dev Tech RPGA Feather
+<li> Open Hardware Summit 2020 Badge
+<li> Orpheus Pico
+<li> Oxocard Artwork
+<li> Oxocard Connect
+<li> Oxocard Galaxy
+<li> Oxocard Science
+<li> P1AM-200
+<li> PCA10056 nRF52840-DK
+<li> PCA10059 nRF52840 Dongle
+<li> PCA10100 nRF52833 DK
+<li> PROVES Kit v4
+<li> PYB LR Nano V2
+<li> Pajenicko PicoPad
+<li> Particle Argon
+<li> Particle Boron
+<li> Particle Xenon
+<li> PewPew 10.2
+<li> PewPew LCD
+<li> PewPew M4
+<li> PicoPlanet
+<li> PillBug
+<li> Pimoroni Badger 2040
+<li> Pimoroni Badger 2040 W
+<li> Pimoroni Inky Frame 5.7
+<li> Pimoroni Inky Frame 7.3
+<li> Pimoroni Interstate 75
+<li> Pimoroni Keybow 2040
+<li> Pimoroni Motor 2040
+<li> Pimoroni PGA2040
+<li> Pimoroni PGA2350
+<li> Pimoroni Pico DV Base W
+<li> Pimoroni Pico LiPo (16MB)
+<li> Pimoroni Pico LiPo (4MB)
+<li> Pimoroni Pico Plus 2
+<li> Pimoroni Pico Plus 2 W
+<li> Pimoroni Pico dv Base
+<li> Pimoroni PicoSystem
+<li> Pimoroni Plasma 2040
+<li> Pimoroni Plasma 2040W
+<li> Pimoroni Plasma 2350
+<li> Pimoroni Plasma 2350W
+<li> Pimoroni Servo 2040
+<li> Pimoroni Tiny 2040 (2MB)
+<li> Pimoroni Tiny 2040 (8MB)
+<li> Pimoroni Tiny 2350
+<li> Pimoroni Tiny FX
+<li> ProS3
+<li> Prokyber Ai-On-The-Edge-Cam
+<li> PyCubedv04
+<li> PyCubedv04-MRAM
+<li> PyCubedv05
+<li> PyCubedv05-MRAM
+<li> PyKey 18 Numpad
+<li> PyKey 44 Ergo
+<li> PyKey 60
+<li> PyKey 87 TKL
+<li> PyboardV1_1
+<li> RF.Guru RP2040
+<li> RGBTouch Mini
+<li> RP2.65-F
+<li> RP2040 Stamp
+<li> RP2350 Stamp
+<li> RP2350 Stamp XL
+<li> Raspberry Breadstick
+<li> Raspberry Pi 4B
+<li> Raspberry Pi Compute Module 4
+<li> Raspberry Pi Compute Module 4 IO Board
+<li> Raspberry Pi Pico
+<li> Raspberry Pi Pico 2
+<li> Raspberry Pi Pico 2 W
+<li> Raspberry Pi Pico W
+<li> Raspberry Pi Zero
+<li> Raspberry Pi Zero 2W
+<li> Raspberry Pi Zero W
+<li> Red S2-WROOM
+<li> Renesas Electronics Corporation RA6M5 Evaluation Kit
+<li> Renesas Electronics Corporation RA8D1 Evaluation Kit
+<li> Robo HAT MM1 M4
+<li> S2Mini
+<li> S2Pico
+<li> SAM E54 Xplained Pro
+<li> SAM32v26
+<li> SPRESENSE
+<li> SQFMI Watchy
+<li> SSCI ISP1807 Dev Board
+<li> SSCI ISP1807 Micro Board
+<li> ST STM32F746G Discovery
+<li> STM32F411E_DISCO
+<li> STM32F412G_DISCO
+<li> STM32F4_DISCO
+<li> STMicroelectronics STM32H7B3I Discovery kit
+<li> Saola 1 w/Wroom
+<li> Saola 1 w/Wrover
+<li> Seeed Studio XIAO ESP32C3
+<li> Seeed XIAO nRF52840 Sense
+<li> Seeed Xiao ESP32-C6 4MB Flash 512KB SRAM
+<li> Seeed Xiao ESP32-S3 Sense
+<li> Seeeduino Wio Terminal
+<li> Seeeduino XIAO
+<li> Seeeduino XIAO KB
+<li> Seeeduino XIAO RP2040
+<li> Seeeduino XIAO RP2350
+<li> Serpente
+<li> SiLabs xG24 Dev Kit
+<li> SiLabs xG24 Explorer Kit
+<li> Silicognition LLC M4-Shim
+<li> Silicognition LLC RP2040-Shim
+<li> Simmel
+<li> SparkFun LUMIDrive
+<li> SparkFun MicroMod RP2040 Processor
+<li> SparkFun MicroMod SAMD51 Processor
+<li> SparkFun MicroMod nRF52840 Processor
+<li> SparkFun Pro Micro RP2040
+<li> SparkFun Pro Micro RP2350
+<li> SparkFun Pro nRF52840 Mini
+<li> SparkFun Qwiic Micro
+<li> SparkFun RedBoard Turbo
+<li> SparkFun SAMD21 Dev Breakout
+<li> SparkFun SAMD21 Mini Breakout
+<li> SparkFun STM32 MicroMod Processor
+<li> SparkFun Teensy MicroMod Processor
+<li> SparkFun Thing Plus - RP2040
+<li> SparkFun Thing Plus - SAMD51
+<li> SparkFun Thing Plus - STM32
+<li> SparkFun Thing Plus RP2350
+<li> Sparkfun Thing Plus MGM240P
+<li> Spotpear ESP32C3 LCD 1.44
+<li> Spotpear ESP32C3 LCD 1.69
+<li> Sprite_v2b
+<li> StackRduino M0 PRO
+<li> Sunton ESP32-2424S012
+<li> Sunton-ESP32-8048S050
+<li> Sunton-ESP32-8048S070
+<li> SuperMini NRF52840
+<li> Swan R5
+<li> TG-Boards' Datalore IP M4
+<li> TG-Watch
+<li> THUNDERPACK_v11
+<li> THUNDERPACK_v12
+<li> TTGO T8 ESP32-S2-WROOM
+<li> Targett Module Clip w/Wroom
+<li> Targett Module Clip w/Wrover
+<li> Teensy 4.0
+<li> Teensy 4.1
+<li> Teknikio Bluebird
+<li> The Open Book Feather
+<li> ThingPulse Pendrive S3
+<li> TinkeringTech ScoutMakes Azul
+<li> TinyC6
+<li> TinyPICO
+<li> TinyPICO Nano
+<li> TinyS2
+<li> TinyS3
+<li> TinyWATCH S3
+<li> Trinket M0 Haxpress
+<li> UARTLogger II
+<li> VCC-GND Studio YD RP2040
+<li> VCC-GND YD-ESP32-S3 (N16R8)
+<li> VCC-GND YD-ESP32-S3 (N8R8)
+<li> VIDI X V1.1
+<li> W5100S-EVB-Pico
+<li> W5100S-EVB-Pico2
+<li> W5500-EVB-Pico
+<li> W5500-EVB-Pico2
+<li> WK-50 Trackball Keyboard
+<li> WSC-1450
+<li> WarmBit BluePixel nRF52840
+<li> Waveshare ESP32-C6 LCD 1.47
+<li> Waveshare ESP32-S2-Pico
+<li> Waveshare ESP32-S2-Pico-LCD
+<li> Waveshare ESP32-S3 LCD 1.47
+<li> Waveshare ESP32-S3-ETH
+<li> Waveshare ESP32-S3-GEEK
+<li> Waveshare ESP32-S3-Matrix
+<li> Waveshare ESP32-S3-Pico
+<li> Waveshare ESP32-S3-Tiny
+<li> Waveshare ESP32-S3-Zero
+<li> Waveshare ESP32S3 LCD 1.28
+<li> Waveshare ESP32S3 Touch LCD 2
+<li> Waveshare RP2040-GEEK
+<li> Waveshare RP2040-LCD-0.96
+<li> Waveshare RP2040-LCD-1.28
+<li> Waveshare RP2040-One
+<li> Waveshare RP2040-PiZero
+<li> Waveshare RP2040-Plus (16MB)
+<li> Waveshare RP2040-Plus (4MB)
+<li> Waveshare RP2040-TOUCH-LCD-1.28
+<li> Waveshare RP2040-Tiny
+<li> Waveshare RP2040-Zero
+<li> Waveshare RP2350-GEEK
+<li> Waveshare RP2350-LCD-0.96
+<li> Waveshare RP2350-LCD-1.28
+<li> Waveshare RP2350-One
+<li> Waveshare RP2350-Plus
+<li> Waveshare RP2350-TOUCH-LCD-1.28
+<li> Waveshare RP2350-Tiny
+<li> Waveshare RP2350-Zero
+<li> WeAct ESP32-C6 (4MB)
+<li> WeAct ESP32-C6 (8MB)
+<li> WeAct Studio Pico
+<li> WeAct Studio Pico 16MB
+<li> WeMos LOLIN32 Lite
+<li> Wemos Lolin C3 Mini
+<li> Wemos Lolin C3 Pico
+<li> Winterbloom Big Honking Button
+<li> Winterbloom Sol
+<li> WisdPi Ardu2040M
+<li> WisdPi Tiny RP2040
+<li> XinaBox CC03
+<li> XinaBox CS11
+<li> cezerio dev ESP32C6
+<li> iLabs Challenger 840
+<li> iMX RT 1020 EVK
+<li> iMX RT 1040 EVK
+<li> iMX RT 1050 EVKB
+<li> iMX RT 1060 EVK
+<li> iMX RT 1060 EVKB
+<li> iMX RT1011 Nano Kit
+<li> keithp.com snekboard
+<li> micro:bit v2
+<li> nanoESP32-S2  w/Wrover
+<li> nanoESP32-S2 w/Wroom
+<li> ndGarage[n°] Bit6: FeatherSnow-v2
+<li> ndGarage[n°]Bit6:FeatherSnow
+<li> nice!nano
+<li> nullbits Bit-C PRO
+<li> senseBox MCU
+<li> senseBox MCU-S2 ESP32S2
+<li> senseBox-eye ESP32S3
+<li> splitkb.com Liatris
+<li> stm32f411ce-blackpill
+<li> stm32f411ce-blackpill-with-flash
+<li> sunton_esp32_2432S024C
+<li> sunton_esp32_2432S028
+<li> sunton_esp32_2432S032C
+<li> takayoshiotake Octave RP2040
+<li> uChip
+<li> uGame10
+<li> uGame22
+</ul>
+</details>
+</p><dl class="py function">
+<dt class="sig sig-object py" id="storage.mount">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">mount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#storage.VfsFat" title="storage.VfsFat"><span class="pre">VfsFat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mount_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.mount" title="Link to this definition"></a></dt>
+<dd><p>Mounts the given filesystem object at the given path.</p>
+<p>This is the CircuitPython analog to the UNIX <code class="docutils literal notranslate"><span class="pre">mount</span></code> command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filesystem</strong> (<a class="reference internal" href="#storage.VfsFat" title="storage.VfsFat"><em>VfsFat</em></a>) – The filesystem to mount.</p></li>
+<li><p><strong>mount_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Where to mount the filesystem.</p></li>
+<li><p><strong>readonly</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – True when the filesystem should be readonly to CircuitPython.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storage.umount">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">umount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#storage.VfsFat" title="storage.VfsFat"><span class="pre">VfsFat</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.umount" title="Link to this definition"></a></dt>
+<dd><p>Unmounts the given filesystem object or if <em>mount</em> is a path, then unmount
+the filesystem mounted at that location.</p>
+<p>This is the CircuitPython analog to the UNIX <code class="docutils literal notranslate"><span class="pre">umount</span></code> command.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storage.remount">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">remount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mount_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_concurrent_write_protection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.remount" title="Link to this definition"></a></dt>
+<dd><p>Remounts the given path with new parameters.</p>
+<p>This can always be done from boot.py. After boot, it can only be done when the host computer
+doesn’t have write access and CircuitPython isn’t currently writing to the filesystem. An
+exception will be raised if this is the case. Some host OSes allow you to eject a drive which
+will allow for remounting.</p>
+<p>Remounting after USB is active may take a little time because it “ejects” the drive for one
+query from the host. These queries happen every second or so.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mount_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The path to remount.</p></li>
+<li><p><strong>readonly</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – True when the filesystem should be readonly to CircuitPython.</p></li>
+<li><p><strong>disable_concurrent_write_protection</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – When True, the check that makes sure the
+underlying filesystem data is written by one computer is disabled. Disabling the protection
+allows CircuitPython and a host to write to the same filesystem with the risk that the
+filesystem will be corrupted.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storage.getmount">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">getmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mount_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#storage.VfsFat" title="storage.VfsFat"><span class="pre">VfsFat</span></a></span></span><a class="headerlink" href="#storage.getmount" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the mount object associated with the mount path</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storage.erase_filesystem">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">erase_filesystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extended</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.erase_filesystem" title="Link to this definition"></a></dt>
+<dd><p>Erase and re-create the <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> filesystem.</p>
+<p>On boards that present USB-visible <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> drive (e.g., SAMD21 and SAMD51),
+then call <a class="reference internal" href="../microcontroller/index.html#microcontroller.reset" title="microcontroller.reset"><code class="xref any py py-func docutils literal notranslate"><span class="pre">microcontroller.reset()</span></code></a> to restart CircuitPython and have the
+host computer remount CIRCUITPY.</p>
+<p>This function can be called from the REPL when <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code>
+has become corrupted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extended</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – On boards that support <code class="docutils literal notranslate"><span class="pre">dualbank</span></code> module
+and the <code class="docutils literal notranslate"><span class="pre">extended</span></code> parameter, the <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> storage can be
+extended by setting this to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a>. If this isn’t provided or
+set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">None</span></code></a> (default), the existing configuration will be used.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>New firmware starts with storage extended. In case of an existing
+filesystem (e.g. uf2 load), the existing extension setting is preserved.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All the data on <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> will be lost, and
+CircuitPython will restart on certain boards.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storage.disable_usb_drive">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">disable_usb_drive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.disable_usb_drive" title="Link to this definition"></a></dt>
+<dd><p>Disable presenting <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> as a USB mass storage device.
+By default, the device is enabled and <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> is visible.
+Can be called in <code class="docutils literal notranslate"><span class="pre">boot.py</span></code>, before USB is connected.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storage.enable_usb_drive">
+<span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">enable_usb_drive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.enable_usb_drive" title="Link to this definition"></a></dt>
+<dd><p>Enabled presenting <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> as a USB mass storage device.
+By default, the device is enabled and <code class="docutils literal notranslate"><span class="pre">CIRCUITPY</span></code> is visible,
+so you do not normally need to call this function.
+Can be called in <code class="docutils literal notranslate"><span class="pre">boot.py</span></code>, before USB is connected.</p>
+<p>If you enable too many devices at once, you will run out of USB endpoints.
+The number of available endpoints varies by microcontroller.
+CircuitPython will go into safe mode after running boot.py to inform you if
+not enough endpoints are available.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="storage.VfsFat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">VfsFat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.circuitpython.org/projects/adafruit-circuitpython-typing/en/latest/api.html#circuitpython_typing.BlockDevice" title="(in Adafruit CircuitPython circuitpython_typing Library v1.0)"><span class="pre">circuitpython_typing.BlockDevice</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#storage.VfsFat" title="Link to this definition"></a></dt>
+<dd><p>Create a new VfsFat filesystem around the given block device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>block_device</strong> – Block device the the filesystem lives on</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="storage.VfsFat.label">
+<span class="sig-name descname"><span class="pre">label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#storage.VfsFat.label" title="Link to this definition"></a></dt>
+<dd><p>The filesystem label, up to 11 case-insensitive bytes.  Note that
+this property can only be set when the device is writable by the
+microcontroller.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="storage.VfsFat.readonly">
+<span class="sig-name descname"><span class="pre">readonly</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#storage.VfsFat.readonly" title="Link to this definition"></a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when the device is mounted as readonly by the microcontroller.
+This property cannot be changed, use <a class="reference internal" href="#storage.remount" title="storage.remount"><code class="xref any py py-func docutils literal notranslate"><span class="pre">storage.remount</span></code></a> instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.mkfs">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mkfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.circuitpython.org/projects/adafruit-circuitpython-typing/en/latest/api.html#circuitpython_typing.BlockDevice" title="(in Adafruit CircuitPython circuitpython_typing Library v1.0)"><span class="pre">circuitpython_typing.BlockDevice</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.VfsFat.mkfs" title="Link to this definition"></a></dt>
+<dd><p>Format the block device, deleting any data that may have been there.</p>
+<p><strong>Limitations</strong>: On SAMD21 builds, <a class="reference internal" href="#storage.VfsFat.mkfs" title="storage.VfsFat.mkfs"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">mkfs()</span></code></a> will raise <code class="docutils literal notranslate"><span class="pre">OSError(22)</span></code> when
+attempting to format filesystems larger than 4GB. The extra code to format larger
+filesystems will not fit on these builds. You can still access
+larger filesystems, but you will need to format the filesystem on another device.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.VfsFat.open" title="Link to this definition"></a></dt>
+<dd><p>Like builtin <code class="docutils literal notranslate"><span class="pre">open()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.ilistdir">
+<span class="sig-name descname"><span class="pre">ilistdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">AnyStr</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">AnyStr</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#storage.VfsFat.ilistdir" title="Link to this definition"></a></dt>
+<dd><p>Return an iterator whose values describe files and folders within
+<code class="docutils literal notranslate"><span class="pre">path</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.mkdir">
+<span class="sig-name descname"><span class="pre">mkdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.VfsFat.mkdir" title="Link to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="../os/index.html#os.mkdir" title="os.mkdir"><code class="xref any py py-func docutils literal notranslate"><span class="pre">os.mkdir</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.rmdir">
+<span class="sig-name descname"><span class="pre">rmdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.VfsFat.rmdir" title="Link to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="../os/index.html#os.rmdir" title="os.rmdir"><code class="xref any py py-func docutils literal notranslate"><span class="pre">os.rmdir</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.stat">
+<span class="sig-name descname"><span class="pre">stat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#storage.VfsFat.stat" title="Link to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="../os/index.html#os.stat" title="os.stat"><code class="xref any py py-func docutils literal notranslate"><span class="pre">os.stat</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.statvfs">
+<span class="sig-name descname"><span class="pre">statvfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#storage.VfsFat.statvfs" title="Link to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="../os/index.html#os.statvfs" title="os.statvfs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">os.statvfs</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.mount">
+<span class="sig-name descname"><span class="pre">mount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mkfs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#storage.VfsFat" title="storage.VfsFat"><span class="pre">VfsFat</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.VfsFat.mount" title="Link to this definition"></a></dt>
+<dd><p>Don’t call this directly, call <a class="reference internal" href="#storage.mount" title="storage.mount"><code class="xref any py py-func docutils literal notranslate"><span class="pre">storage.mount</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage.VfsFat.umount">
+<span class="sig-name descname"><span class="pre">umount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#storage.VfsFat.umount" title="Link to this definition"></a></dt>
+<dd><p>Don’t call this directly, call <a class="reference internal" href="#storage.umount" title="storage.umount"><code class="xref any py py-func docutils literal notranslate"><span class="pre">storage.umount</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../ssl/index.html" class="btn btn-neutral float-left" title="ssl" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../struct/index.html" class="btn btn-neutral float-right" title="struct – Manipulation of c-style data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2025, MicroPython &amp; CircuitPython contributors (https://github.com/adafruit/circuitpython/graphs/contributors).
+      <span class="lastupdated">Last updated on 20 Oct 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

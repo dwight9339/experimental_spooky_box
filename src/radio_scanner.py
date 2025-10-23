@@ -120,7 +120,12 @@ class RadioScanner:
     self.freq = settings.starting_freq
     self.radio = tinkeringtech_rda5807m.Radio(self.radio_i2c, self.rds, self.freq, settings.volume)
     self.radio.set_band("FM")
+    self.radio.set_mono(True)
     self.last_scan_tick = time.monotonic()
+
+  def set_freq(self, freq: int):
+    self.freq = freq
+    self.radio.set_freq(self.freq)
 
   def linear_scan(self, settings: RadioScanSettings):
     self.freq += settings.step * settings.direction
@@ -135,6 +140,12 @@ class RadioScanner:
     self.freq = random.randint(settings.min_scan_freq, settings.max_scan_freq)
     self.radio.set_freq(self.freq)
     return self.freq
+  
+  def seek(self, direction: int):
+    if direction < 0:
+      self.radio.seek_down()
+    else:
+      self.radio.seek_up()
     
   def update(self, now, settings: RadioScanSettings):
     interval = 60 / settings.rate

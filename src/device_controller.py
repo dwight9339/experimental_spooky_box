@@ -44,6 +44,7 @@ class DeviceController:
         """Apply default configuration for all managed peripherals."""
         if self.debug:
             print("DeviceController: initializing subsystems.")
+        self.radio_scanner.seek(1)
 
 
     def enable_radio_scanner(self) -> None:
