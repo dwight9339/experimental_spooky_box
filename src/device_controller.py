@@ -23,20 +23,20 @@ class DeviceController:
         self.debug = debug
 
         self.radio_scanner = RadioScanner(self.i2c, debug=self.debug)
-        self.emf_reader = EMFReader(self.i2c, debug=self.debug)
+        # self.emf_reader = EMFReader(self.i2c, debug=self.debug)
 
     def initialize(self) -> None:
         """Apply default configuration for all managed peripherals."""
         if self.debug:
             print("DeviceController: initializing subsystems.")
-        
-        self.emf_reader.calibrate(time.monotonic(), duration=5.0)
+        self.radio_scanner.setup()
+        # self.emf_reader.calibrate(time.monotonic(), duration=5.0)
 
     def loop(self) -> None:
         now = time.monotonic()
 
         self.radio_scanner.update(now)
-        self.emf_reader.update(now)
+        # self.emf_reader.update(now)
 
     def run_forever(self) -> None:
         if self.debug:

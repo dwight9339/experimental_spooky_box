@@ -65,6 +65,7 @@ RADIO_REG_R4_AFC = 0x0100
 
 RADIO_REG_VOL = 0x05
 RADIO_REG_VOL_VOL = 0x000F
+RADIO_REG_VOL_SEEKTH = 0x0F00     # bits 11:8 – seek threshold
 
 RADIO_REG_RA = 0x0A
 RADIO_REG_RA_RDS = 0x8000
@@ -206,13 +207,20 @@ class Radio:
         # Adjust volume
         self.save_register(RADIO_REG_VOL)
 
-        # Get frequnecy
+    def poll_tune(self):
+        self.write_bytes(bytes([RADIO_REG_RA]))
+        ra = self.read16()
+        if not (ra & RADIO_REG_RA_STC):
+            return False  # still tuning
+        
+        self.tune_pending = False
         self.get_freq()
 
-        if self.get_rssi() > self.rds_threshold:
-            self.rds_ready = True
-        else:
-            self.rds_ready = False
+        self.registers[RADIO_REG_CHAN] &= ~RADIO_REG_CHAN_TUNE
+        self.save_register(RADIO_REG_CHAN)
+        self.rds_ready = self.get_rssi() > self.rds_threshold
+
+        return True
 
     def get_freq(self):
         """docstring."""
@@ -248,6 +256,44 @@ class Radio:
             r = RADIO_REG_CHAN_BAND_FMWORLD
         self.registers[RADIO_REG_CHAN] = r | RADIO_REG_CHAN_SPACE_100
         self.save_register(RADIO_REG_CHAN)
+
+    def seek_up(self):
+        """docstring."""
+        # Start seek mode upwards
+        self.registers[RADIO_REG_CTRL] = (
+            self.registers[RADIO_REG_CTRL] | RADIO_REG_CTRL_SEEKUP
+        )
+        self.registers[RADIO_REG_CTRL] = (
+            self.registers[RADIO_REG_CTRL] | RADIO_REG_CTRL_SEEK
+        )
+        self.save_register(RADIO_REG_CTRL)
+
+        # Wait until scan is over
+        time.sleep(1)
+        self.get_freq()
+        self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
+            ~RADIO_REG_CTRL_SEEK
+        )
+        self.save_register(RADIO_REG_CTRL)
+
+    def seek_down(self):
+        """docstring."""
+        # Start seek mode downwards
+        self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
+            ~RADIO_REG_CTRL_SEEKUP
+        )
+        self.registers[RADIO_REG_CTRL] = (
+            self.registers[RADIO_REG_CTRL] | RADIO_REG_CTRL_SEEK
+        )
+        self.save_register(RADIO_REG_CTRL)
+
+        # Wait until scan is over
+        time.sleep(1)
+        self.get_freq()
+        self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
+            ~RADIO_REG_CTRL_SEEK
+        )
+        self.save_register(RADIO_REG_CTRL)
 
     def term(self):
         """docstring."""
@@ -323,42 +369,6 @@ class Radio:
         time.sleep(2)
         self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
             ~RADIO_REG_CTRL_RESET
-        )
-        self.save_register(RADIO_REG_CTRL)
-
-    def seek_up(self):
-        """docstring."""
-        # Start seek mode upwards
-        self.registers[RADIO_REG_CTRL] = (
-            self.registers[RADIO_REG_CTRL] | RADIO_REG_CTRL_SEEKUP
-        )
-        self.registers[RADIO_REG_CTRL] = (
-            self.registers[RADIO_REG_CTRL] | RADIO_REG_CTRL_SEEK
-        )
-        self.save_register(RADIO_REG_CTRL)
-
-        # Wait until scan is over
-        self.get_freq()
-        self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
-            ~RADIO_REG_CTRL_SEEK
-        )
-        self.save_register(RADIO_REG_CTRL)
-
-    def seek_down(self):
-        """docstring."""
-        # Start seek mode downwards
-        self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
-            ~RADIO_REG_CTRL_SEEKUP
-        )
-        self.registers[RADIO_REG_CTRL] = (
-            self.registers[RADIO_REG_CTRL] | RADIO_REG_CTRL_SEEK
-        )
-        self.save_register(RADIO_REG_CTRL)
-
-        # Wait until scan is over
-        self.get_freq()
-        self.registers[RADIO_REG_CTRL] = self.registers[RADIO_REG_CTRL] & (
-            ~RADIO_REG_CTRL_SEEK
         )
         self.save_register(RADIO_REG_CTRL)
 
